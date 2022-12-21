@@ -2,11 +2,11 @@ WHY NOT A GIF HERE? TO SET THE MODE.
 
 # Ilha das mil pragas
 
-Some text about your lovely island
+Welcome! Between the volcanic embers dancing in the skies, the gigantic mosquitos, and tropical maladies you probably never heard of, we assure you'll get an experience you won't forget!
 
 # Terminal Hoteleiro
 
-Why not add some info about the hotel of your dreams?
+Our fine hotel is your end station on our beautiful island. It's been that for quite a few people!
 
 # Instructions
 
