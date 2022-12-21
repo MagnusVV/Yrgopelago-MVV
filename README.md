@@ -1,10 +1,10 @@
 WHY NOT A GIF HERE? TO SET THE MODE.
 
-# Island name
+# Ilha das mil pragas
 
 Some text about your lovely island
 
-# Hotel name
+# Terminal Hoteleiro
 
 Why not add some info about the hotel of your dreams?
 
