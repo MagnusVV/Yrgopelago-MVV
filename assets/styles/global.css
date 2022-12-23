@@ -1,0 +1,36 @@
+/* FONTS USED */
+
+@font-face {
+  font-family: 'Oswald-medium';
+  src: url('../fonts/Oswald-VariableFont_wght.woff') format('woff');
+  src: url('../fonts/Oswald-VariableFont_wght.woff2') format('woff2');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Oswald-regular';
+  src: url('..//fonts/Oswald-VariableFont_wght.woff') format('woff');
+  src: url('../fonts/Oswald-VariableFont_wght.woff2') format('woff2');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Montserrat-regular';
+  src: url('../fonts/Montserrat-VariableFont_wght.woff') format('woff');
+  src: url('../fonts/Montserrat-VariableFont_wght.woff2') format('woff2');
+  font-weight: 400;
+}
+
+/* --- --- --- --- --- */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
