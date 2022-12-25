@@ -21,6 +21,19 @@
   font-weight: 400;
 }
 
+h1,
+h2 {
+  font-family: 'Oswald-medium';
+}
+
+h3 {
+  font-family: 'Oswald-regular';
+}
+
+:root {
+  font-family: 'Montserrat-regular';
+}
+
 /* --- --- --- --- --- */
 
 * {
@@ -33,4 +46,10 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+header,
+main,
+footer {
+  padding: 0 1rem;
 }
