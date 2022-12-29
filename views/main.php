@@ -23,6 +23,12 @@
                     <input type="text" name="transferCode" id="transferCode" class="">
                 </p>
 
+                <!-- Customer name: -->
+                <p>
+                    <label for="transferCode" class="">Your name</label><br>
+                    <input type="text" name="customer" id="customer" class="">
+                </p>
+
                 <!-- Choose arrival date: -->
                 <p>
                     <label for="arrivalDate" class="">Arrival date</label><br>
@@ -39,9 +45,9 @@
                 <p>
                     <label for="roomSelect" class="">Select room</label><br>
                     <select name="roomSelect" id="roomSelect">
-                        <option value="1">Rustic</option>
-                        <option value="2">Tourist</option>
-                        <option value="3">Oh yes, baby!</option>
+                        <option value="1">Rustic $1/day</option>
+                        <option value="2">Tourist $2/day</option>
+                        <option value="3">Oh yes, baby! $3/day</option>
                     </select>
                 </p>
 
@@ -49,9 +55,9 @@
                 <p>
                     <label for="extras" class="">Choose extra features, if desired<br>
 
-                        <input type="checkbox" name="extrasFirst" id="extras" class=""> First extra feature<br>
-                        <input type="checkbox" name="extrasSecond" id="extras" class=""> Second extra feature<br>
-                        <input type="checkbox" name="extrasThird" id="extras" class=""> Third extra feature<br>
+                        <input type="checkbox" name="extrasFirst" id="extras" class=""> First extra feature, $1/day<br>
+                        <input type="checkbox" name="extrasSecond" id="extras" class=""> Second extra feature, $2/day<br>
+                        <input type="checkbox" name="extrasThird" id="extras" class=""> Third extra feature, $3/day<br>
 
                     </label>
                 </p>
