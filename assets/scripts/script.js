@@ -9,9 +9,7 @@ const departureDate = document.getElementById('departureDate');
 
 function addOrSubstractDays(date, int) {
   const modifyDate = new Date(date);
-
   modifyDate.setUTCDate(modifyDate.getUTCDate() + int);
-
   const dayResult = modifyDate.toISOString().substring(0, 10);
 
   return dayResult;

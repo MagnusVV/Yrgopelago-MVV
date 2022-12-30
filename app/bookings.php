@@ -8,9 +8,7 @@ declare(strict_types=1);
 // transferCode: Check if string is empty:
 
 if (isset($_POST['transferCode']) && !empty($_POST['transferCode'])) {
-
     $transferCode = htmlspecialchars($_POST['transferCode'], ENT_QUOTES);
-
     echo $transferCode . '<br>';
 
     // Message if code is invalid or empty:
@@ -23,9 +21,7 @@ if (isset($_POST['transferCode']) && !empty($_POST['transferCode'])) {
 // customer: Check if string is empty:
 
 if (isset($_POST['customer']) && !empty($_POST['customer'])) {
-
     $customer = htmlspecialchars($_POST['customer'], ENT_QUOTES);
-
     echo $customer . '<br>';
 
     // Message if name is empty:
@@ -38,11 +34,8 @@ if (isset($_POST['customer']) && !empty($_POST['customer'])) {
 // arrival and departure: Check if both dates are set:
 
 if (isset($_POST['arrivalDate']) && isset($_POST['departureDate']) && !empty($_POST['arrivalDate']) && !empty($_POST['departureDate'])) {
-
     $arrivalDate = htmlspecialchars($_POST['arrivalDate']);
-
     $departureDate = htmlspecialchars($_POST['departureDate']);
-
     echo $arrivalDate . " — " . $departureDate . "<br>";
 } else {
     echo 'Either or both dates have not been chosen. Please return and check. <br>';
