@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+require '../views/header.php';
+
 
 // isset-block for checking and creating variables from booking-field in index.php.
 
@@ -44,3 +46,5 @@ if (isset($_POST['arrivalDate']) && isset($_POST['departureDate']) && !empty($_P
 
 
 // $name = htmlspecialchars($name, ENT_QUOTES);
+
+require '../views/footer.php';
