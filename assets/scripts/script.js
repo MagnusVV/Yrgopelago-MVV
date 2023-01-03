@@ -33,19 +33,40 @@ departureDate.onchange = function setMinArrivalDate() {
   arrivalDate.setAttribute('max', addOrSubstractDays(secondDate, -1));
 };
 
+// total-cost-FIELD at the bottom of the form:
+
+const totalCost = document.getElementById('totalCost');
+
+totalCost.setAttribute('value', 1);
+
 // room-SELECTION:
 
 const roomSelector = document.getElementById('roomSelection');
 
-// this is just the start value (cost)
-let roomCost = roomSelector.value;
+// this is just the default start value (room cost)
+let roomCost = parseInt(roomSelector.value);
 
-console.log(roomCost);
-
-roomSelector.onchange = function () {
-  const selectedRoomCost = roomSelector.value;
-
-  console.log(selectedRoomCost);
+// getting the running value (room cost) from the selector, and adding it to total cost
+roomSelector.onchange = () => {
+  for (let i = 0; i < roomSelector.length; i++) {
+    if (roomSelector[i].selected) {
+      totalCost.value = roomSelector[i].value;
+    }
+  }
 };
+
+// extras-SELECTION:
+
+const extrasCheckBoxes = document.querySelectorAll('#extras');
+
+console.log(extrasCheckBoxes);
+
+const firstBox = document.getElementsByName('extrasFirst');
+
+console.log(firstBox);
+
+firstBox.forEach((boxValue) => console.log(boxValue.value));
+
+// adding/substracting cost for Extras, and adding it to total cost
 
 // <--- --- ---

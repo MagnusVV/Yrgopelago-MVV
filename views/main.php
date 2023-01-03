@@ -31,6 +31,16 @@
                     <input type="text" name="customer" placeholder="Given or other" id="customer" class="" required>
                 </p>
 
+                <!-- Select room -->
+                <p>
+                    <label for="roomSelect" class="">Select room</label><br>
+                    <select name="roomSelection" id="roomSelection">
+                        <option id="roomSelect1" value="1">Rustic ($1/day)</option>
+                        <option id="roomSelect2" value="2">Tourist ($2/day)</option>
+                        <option id="roomSelect3" value="3">Oh yes, baby! ($3/day)</option>
+                    </select>
+                </p>
+
                 <!-- Choose arrival date: -->
                 <p>
                     <label for="arrivalDate" class="">Arrival date</label><br>
@@ -41,16 +51,6 @@
                 <p>
                     <label for="departureDate" class="">Departure date</label><br>
                     <input type="date" name="departureDate" id="departureDate" class="" min="2023-01-01" max="2023-01-31" required>
-                </p>
-
-                <!-- Select room -->
-                <p>
-                    <label for="roomSelect" class="">Select room</label><br>
-                    <select name="roomSelection" id="roomSelection">
-                        <option id="roomSelect1" value="1">Rustic ($1/day)</option>
-                        <option id="roomSelect2" value="2">Tourist ($2/day)</option>
-                        <option id="roomSelect3" value="3">Oh yes, baby! ($3/day)</option>
-                    </select>
                 </p>
 
                 <!-- Extras (in progress) -->
@@ -66,7 +66,7 @@
 
                 <!-- Total cost -->
                 <br>
-                <p>Total sum: $</p>
+                <p>Total sum: <input type="text" size="2" name="totalCost" id="totalCost" value="" readonly />$</p>
                 <br>
 
                 <!-- Button for submitting booking values to app/bookings.php -->

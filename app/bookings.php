@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-require '../views/header.php';
-
 
 // isset-block for checking and creating variables from booking-field in index.php.
 
@@ -32,6 +30,14 @@ if (isset($_POST['customer']) && !empty($_POST['customer'])) {
     echo 'Field "Your name" empty. Please return and fill out your name. <br>';
 }
 
+// room choice: selection confirmaton:
+
+if (isset($_POST['roomSelection'])) {
+
+    $roomSelection = (int)htmlspecialchars($_POST['roomSelection']);
+    echo $roomSelection . '<br>';
+}
+
 
 // arrival and departure: Check if both dates are set:
 
@@ -43,8 +49,14 @@ if (isset($_POST['arrivalDate']) && isset($_POST['departureDate']) && !empty($_P
     echo 'Either or both dates have not been chosen. Please return and check. <br>';
 }
 
+// total cost with room, extras, no. of days:
+
+if (isset($_POST['totalCost'])) {
+    $totalCost = (int)filter_var($_POST['totalCost'], FILTER_SANITIZE_NUMBER_INT);
+
+    echo $totalCost . '<br>';
+}
+
 
 
 // $name = htmlspecialchars($name, ENT_QUOTES);
-
-require '../views/footer.php';
