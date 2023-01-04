@@ -6,7 +6,7 @@ Welcome! Between the volcanic embers dancing in the skies, the gigantic mosquito
 
 # Terminal Hoteleiro
 
-Our fine hotel is your end station on our beautiful island. It's been that for quite a few people!
+Our fine hotel is your end station on our beautiful island. It has been for quite a few people!
 
 # Instructions
 
