@@ -66,7 +66,7 @@
 
                 <!-- Total cost -->
                 <br>
-                <p>Total sum: <input type="text" size="2" name="totalCost" id="totalCost" value="" readonly />$</p>
+                <p>Total sum: <input type="text" size="3" name="totalCost" id="totalCost" value="" readonly />$</p>
                 <br>
 
                 <!-- Button for submitting booking values to app/bookings.php -->
