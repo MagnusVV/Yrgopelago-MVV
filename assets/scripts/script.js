@@ -59,14 +59,19 @@ roomSelector.onchange = () => {
 
 const extrasCheckBoxes = document.querySelectorAll('#extras');
 
-console.log(extrasCheckBoxes);
+// adding/substracting cost for Extras, and adding it to total cost. Inspired by: http://www.madirish.net/11
 
-const firstBox = document.getElementsByName('extrasFirst');
+extrasCheckBoxes.forEach((checkBox) => {
+  checkBox.addEventListener('change', () => {
+    let sumAdded = 0;
+    extrasCheckBoxes.forEach((checkBox) => {
+      if (checkBox.checked == true) {
+        sumAdded = sumAdded + parseInt(checkBox.value);
+      }
+    });
 
-console.log(firstBox);
-
-firstBox.forEach((boxValue) => console.log(boxValue.value));
-
-// adding/substracting cost for Extras, and adding it to total cost
+    console.log(sumAdded);
+  });
+});
 
 // <--- --- ---
