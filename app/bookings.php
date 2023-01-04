@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 
 // isset-block for checking and creating variables from booking-field in index.php.
 
@@ -32,10 +30,13 @@ if (isset($_POST['customer']) && !empty($_POST['customer'])) {
 
 // room choice: selection confirmaton:
 
+$roomNames = array('Rustic', 'Tourist', 'Oh yes, baby!');
+
 if (isset($_POST['roomSelection'])) {
 
-    $roomSelection = (int)htmlspecialchars($_POST['roomSelection']);
-    echo $roomSelection . '<br>';
+    $roomSelection = (int)htmlspecialchars($_POST['roomSelection'], FILTER_SANITIZE_NUMBER_INT);
+
+    echo $roomNames[$roomSelection - 1] . '<br>';
 }
 
 
@@ -44,9 +45,32 @@ if (isset($_POST['roomSelection'])) {
 if (isset($_POST['arrivalDate']) && isset($_POST['departureDate']) && !empty($_POST['arrivalDate']) && !empty($_POST['departureDate'])) {
     $arrivalDate = htmlspecialchars($_POST['arrivalDate']);
     $departureDate = htmlspecialchars($_POST['departureDate']);
-    echo $arrivalDate . " — " . $departureDate . "<br>";
+    echo $arrivalDate . "<br>" . $departureDate . "<br>";
 } else {
     echo 'Either or both dates have not been chosen. Please return and check. <br>';
+}
+
+
+// extras: List all selected:
+
+$extrasNames = array('First aid kit', 'Priest', 'Products for nice and vivid dreams');
+
+if (isset($_POST['extrasFirst'])) {
+    $extrasFirst = (int)htmlspecialchars($_POST['extrasFirst'], FILTER_SANITIZE_NUMBER_INT);
+
+    echo $extrasNames[$extrasFirst - 1] . '<br>';
+}
+
+if (isset($_POST['extrasSecond'])) {
+    $extrasSecond = (int)htmlspecialchars($_POST['extrasSecond'], FILTER_SANITIZE_NUMBER_INT);
+
+    echo $extrasNames[$extrasSecond - 1] . '<br>';
+}
+
+if (isset($_POST['extrasThird'])) {
+    $extrasThird = (int)htmlspecialchars($_POST['extrasThird'], FILTER_SANITIZE_NUMBER_INT);
+
+    echo $extrasNames[$extrasThird - 1] . '<br>';
 }
 
 // total cost with room, extras, no. of days:

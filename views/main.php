@@ -53,7 +53,7 @@
                     <input type="date" name="departureDate" id="departureDate" class="" min="2023-01-01" max="2023-01-31" required>
                 </p>
 
-                <!-- Extras (in progress) -->
+                <!-- Extras -->
                 <p>
                     <label for="extras" class="">Choose extra features, if desired<br>
 
