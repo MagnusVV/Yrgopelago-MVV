@@ -2,8 +2,11 @@
 
 try {
     $hotelDatabase = new PDO('sqlite:./app/database/hoteldatabase.db');
+    $hotelDatabase->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $hotelDatabase->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    echo 'Connection failed:' . $e->getMessage();
+    echo 'Connection failed:';
+    throw $e;
 }
 
 ?>
@@ -22,7 +25,7 @@ try {
         <section class="calendar">
             <?php
 
-            /* Php-calendar creator is called here. Resources from: https://packagist.org/packages/benhall14/php-calendar */
+            /* php-calendar creator is called here. Resources from: https://packagist.org/packages/benhall14/php-calendar */
 
             use benhall14\phpCalendar\Calendar as Calendar;
 
@@ -39,16 +42,36 @@ try {
                 echo $calendarVarName->draw(date('2023-01-01'), 'orange');
             }
 
+            /* function creates an array which, when input in the calendar "addEvents"-function, is used by that function to mask (change color) on booked dates */
+            function maskBookedDates($bookedDatesArray, $arrayFromDatabase, $calendar)
+            {
+                foreach ($arrayFromDatabase as $dates) {
+                    $bookedDatesArray[] = [
+                        'start' => $dates['Arrival_date'],
+                        'end' => $dates['Departure_date'],
+                        'summary' => '',
+                        'mask' => true
+                    ];
+                }
+
+                /* output array is used in the calendar function */
+                $calendar->addEvents($bookedDatesArray);
+            };
+
             ?>
             <section id="calendarForRoom_1">
                 <?php
                 $firstRoomCalendar = new Calendar;
-                $firstRoomCalendar->addEvent(
-                    '2023-01-14',
-                    '2023-01-17',
-                    '',
-                    true
-                );
+
+                /* Arrival_date and Departure_date is fetched as an associative array from database */
+                $firstRoomStmt = $hotelDatabase->query('SELECT Arrival_date,Departure_date FROM Room_2 ORDER BY Arrival_date');
+
+                $firstRoomDates = $firstRoomStmt->fetchAll(PDO::FETCH_ASSOC);
+
+                /* array that will hold the calendarevents */
+                $firstRoomBookings = [];
+
+                maskBookedDates($firstRoomBookings, $firstRoomDates, $firstRoomCalendar);
 
                 styleCalendar($firstRoomCalendar);
 
@@ -57,6 +80,15 @@ try {
             <section id="calendarForRoom_2">
                 <?php
                 $secondRoomCalendar = new Calendar;
+
+                $secondRoomStmt = $hotelDatabase->query('SELECT Arrival_date,Departure_date FROM Room_2 ORDER BY Arrival_date');
+
+                $secondRoomDates = $secondRoomStmt->fetchAll(PDO::FETCH_ASSOC);
+
+                $secondRoomBookings = [];
+
+                maskBookedDates($secondRoomBookings, $secondRoomDates, $secondRoomCalendar);
+
                 styleCalendar($secondRoomCalendar);
 
                 ?>
@@ -64,15 +96,16 @@ try {
             <section id="calendarForRoom_3">
                 <?php
                 $thirdRoomCalendar = new Calendar;
-                $thirdRoomCalendar->addEvent(
-                    '2023-01-20',
-                    '2023-01-23',
-                    '',
-                    true
-                );
+
+                $thirdRoomStmt = $hotelDatabase->query('SELECT Arrival_date,Departure_date FROM Room_3 ORDER BY Arrival_date');
+
+                $thirdRoomDates = $thirdRoomStmt->fetchAll(PDO::FETCH_ASSOC);
+
+                $thirdRoomBookings = [];
+
+                maskBookedDates($thirdRoomBookings, $thirdRoomDates, $thirdRoomCalendar);
 
                 styleCalendar($thirdRoomCalendar);
-
 
                 ?>
             </section>
