@@ -1,3 +1,13 @@
+<?php
+
+try {
+    $hotelDatabase = new PDO('sqlite:./app/database/hoteldatabase.db');
+} catch (PDOException $e) {
+    echo 'Connection failed:' . $e->getMessage();
+}
+
+?>
+
 <main>
 
     <!-- "ABOUT"-SECTION -->
@@ -8,8 +18,65 @@
 
     <section class="actions">
 
-        <!-- the calendar -->
-        <section class="calendar"></section>
+        <!-- the calendars -->
+        <section class="calendar">
+            <?php
+
+            /* Php-calendar creator is called here. Resources from: https://packagist.org/packages/benhall14/php-calendar */
+
+            use benhall14\phpCalendar\Calendar as Calendar;
+
+            /* function that style and set parameters to calendar */
+
+            function styleCalendar($calendarVarName)
+            {
+                $calendarVarName->stylesheet();
+
+                $calendarVarName->useMondayStartingDate();
+
+                $calendarVarName->useFullDayNames();
+
+                echo $calendarVarName->draw(date('2023-01-01'), 'orange');
+            }
+
+            ?>
+            <section id="calendarForRoom_1">
+                <?php
+                $firstRoomCalendar = new Calendar;
+                $firstRoomCalendar->addEvent(
+                    '2023-01-14',
+                    '2023-01-17',
+                    '',
+                    true
+                );
+
+                styleCalendar($firstRoomCalendar);
+
+                ?>
+            </section>
+            <section id="calendarForRoom_2">
+                <?php
+                $secondRoomCalendar = new Calendar;
+                styleCalendar($secondRoomCalendar);
+
+                ?>
+            </section>
+            <section id="calendarForRoom_3">
+                <?php
+                $thirdRoomCalendar = new Calendar;
+                $thirdRoomCalendar->addEvent(
+                    '2023-01-20',
+                    '2023-01-23',
+                    '',
+                    true
+                );
+
+                styleCalendar($thirdRoomCalendar);
+
+
+                ?>
+            </section>
+        </section>
 
         <!-- the booking-form  -->
         <section class="booking-form">

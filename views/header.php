@@ -8,11 +8,7 @@
     <link rel="stylesheet" href="./assets/styles/global.css">
     <link rel="stylesheet" href="./assets/styles/style.css">
 
-    <!-- Styling för kalenderpaketet: -->
-
-    <link rel="stylesheet" href="./assets/styles/calendar.css">
-
-    <title>Yrgopelago</title>
+    <title>Yrgopelago-MVV</title>
     <link rel="icon" href="./assets/images/favicon/VV-logo.ico" type="image/x-icon" />
 </head>
 

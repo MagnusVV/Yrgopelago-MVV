@@ -1,6 +1,5 @@
 <?php
 
-
 try {
     $hotelDatabase = new PDO('sqlite:./database/hoteldatabase.db');
 } catch (PDOException $e) {
