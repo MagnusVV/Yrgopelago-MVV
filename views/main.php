@@ -64,7 +64,7 @@ try {
                 $firstRoomCalendar = new Calendar;
 
                 /* Arrival_date and Departure_date is fetched as an associative array from database */
-                $firstRoomStmt = $hotelDatabase->query('SELECT Arrival_date,Departure_date FROM Room_2 ORDER BY Arrival_date');
+                $firstRoomStmt = $hotelDatabase->query('SELECT Arrival_date,Departure_date FROM Room_1 ORDER BY Arrival_date');
 
                 $firstRoomDates = $firstRoomStmt->fetchAll(PDO::FETCH_ASSOC);
 
