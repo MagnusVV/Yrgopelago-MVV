@@ -142,7 +142,7 @@ if (isset($_POST['totalCost'])) {
 // * (Logic for validation of code goes here) *
 //
 
-/* if ($dateBaseWriteTest === 'yes') {
+if ($dateBaseWriteTest === 'yes') {
 
     //query modified by room no:
     $bookingQuery = createBookingQuery($roomSelection);
@@ -161,7 +161,7 @@ if (isset($_POST['totalCost'])) {
     $insertIntoDb->execute();
 } else {
     echo 'Catastrophic booking error!';
-} */
+}
 
 // ---
 // JSON-response for succesful booking:
