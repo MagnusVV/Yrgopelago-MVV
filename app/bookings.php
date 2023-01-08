@@ -56,13 +56,27 @@ if (isset($_POST['arrivalDate']) && isset($_POST['departureDate']) && !empty($_P
         $allBookedDatesArr[] = createSeparateDaysArr($arrivalDates[$i], $departureDates[$i]);
     };
 
+    // finally it's time to check if "$arrivalDate" and "$departureDate" are not already booked:
     foreach ($allBookedDatesArr as $dateChunks) {
-        foreach ($dateChunks as $singleDays) {
-            echo $singleDays . '<br>';
+        foreach ($dateChunks as $singleDates) {
+
+            // creates array that holds all single days in current booking:
+            $arrivalDepartureDateSpan = createSeparateDaysArr($arrivalDate, $departureDate);
+
+            foreach ($arrivalDepartureDateSpan as $datesToCheck) {
+
+                if ($datesToCheck === $singleDates) {
+                    echo $datesToCheck . ' WTF! <br>';
+                    echo '<script>alert("WTF!")</script>';
+
+                    // redirects back to main page:
+                    header('Location:../index.php');
+                    echo '<script>alert("WTF!")</script>';
+                    die();
+                }
+            };
         };
     };
-
-    echo '<br>';
 
     //
 
@@ -143,7 +157,7 @@ if (isset($_POST['totalCost'])) {
 // * (Logic for validation of code goes here) *
 //
 
-/* if ($dateBaseWriteTest === 'yes') {
+if ($dateBaseWriteTest === 'yes') {
 
     //query modified by room no:
     $bookingQuery = createBookingQuery($roomSelection);
@@ -164,7 +178,7 @@ if (isset($_POST['totalCost'])) {
     echo 'jippi';
 } else {
     echo 'skit';
-} */
+}
 
 
 
