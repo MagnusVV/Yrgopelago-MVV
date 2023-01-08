@@ -66,12 +66,13 @@ if (isset($_POST['arrivalDate']) && isset($_POST['departureDate']) && !empty($_P
             foreach ($arrivalDepartureDateSpan as $datesToCheck) {
 
                 if ($datesToCheck === $singleDates) {
-                    echo $datesToCheck . ' WTF! <br>';
-                    echo '<script>alert("WTF!")</script>';
+
+                    $dateFailMessage = "You know, you can't just pick a date like you own the hotel, or something. We do have other guests in that room during, or part of, that period. Please try again.";
+
+                    echo '<script>alert("' . $dateFailMessage . '")</script>';
 
                     // redirects back to main page:
-                    header('Location:../index.php');
-                    echo '<script>alert("WTF!")</script>';
+                    echo "<script>document.location = '/../index.php'</script>";
                     die();
                 }
             };
