@@ -1,52 +1,63 @@
 <?php
 
-/* 
-Here's something to start your career as a hotel manager.
+declare(strict_types=1);
 
-One function to connect to the database you want (it will return a PDO object which you then can use.)
-    For instance: $db = connect('hotel.db');
-                  $db->prepare("SELECT * FROM bookings");
-                  
-one function to create a guid,
-and one function to control if a guid is valid.
-*/
+// THE CALENDAR FUNCTIONS:
 
-function connect(string $dbName): object
+// function that style and set parameters to calendar
+function styleCalendar($calendar)
 {
-    $dbPath = __DIR__ . '/' . $dbName;
-    $db = "sqlite:$dbPath";
+    $calendar->stylesheet();
 
-    // Open the database file and catch the exception if it fails.
-    try {
-        $db = new PDO($db);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        echo "Failed to connect to the database";
-        throw $e;
+    $calendar->useMondayStartingDate();
+
+    $calendar->useFullDayNames();
+
+    echo $calendar->draw(date('2023-01-01'), 'orange');
+}
+
+// function creates an array which, when input in the calendar "addEvents"-function, is used by that function to mask (change color) on booked dates
+function maskBookedDates($bookedDatesArray, $arrayFromDatabase, $calendar)
+{
+    foreach ($arrayFromDatabase as $dates) {
+        $bookedDatesArray[] = [
+            'start' => $dates['Arrival_date'],
+            'end' => $dates['Departure_date'],
+            'summary' => '',
+            'mask' => true
+        ];
     }
-    return $db;
-}
 
-function guidv4(string $data = null): string
+    // output array is used in this calendar function
+    $calendar->addEvents($bookedDatesArray);
+};
+
+// THE BOOKING FUNCTIONS:
+
+// this creates a query that fetches Arrival_date and Departure_date as an associative array from database. The query is modified depending on room choice:
+function createFetchBookedDatesQuery(int $roomNr)
 {
-    // Generate 16 bytes (128 bits) of random data or use the data passed into the function.
-    $data = $data ?? random_bytes(16);
-    assert(strlen($data) == 16);
+    return
+        'SELECT Arrival_date,Departure_date FROM Room_' . $roomNr . ' ORDER BY Arrival_date';
+};
 
-    // Set version to 0100
-    $data[6] = chr(ord($data[6]) & 0x0f | 0x40);
-    // Set bits 6-7 to 10
-    $data[8] = chr(ord($data[8]) & 0x3f | 0x80);
-
-    // Output the 36 character UUID.
-    return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
-}
-
-function isValidUuid(string $uuid): bool
+// this creates a query for inserting all booking information into database.
+function createBookingQuery(int $roomNr)
 {
-    if (!is_string($uuid) || (preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/', $uuid) !== 1)) {
-        return false;
+    return
+        'INSERT INTO Room_' . $roomNr . ' (Guest_name, Payment_code, Arrival_date, Departure_date, Extra_feature_1, Extra_feature_2, Extra_feature_3, Total_cost) VALUES (:guest_name, :payment_code, :arrival_date, :departure_date, :extra_feature_1, :extra_feature_2, :extra_feature_3, :total_cost)';
+};
+
+// Creates a new array where every booked date is a separate value. Function inspired by: https://www.tutorialspoint.com/return-all-dates-between-two-dates-in-an-array-in-php
+function createSeparateDaysArr($arrivalDate, $departureDate)
+{
+    $datesTotal = [];
+    $current = strtotime($arrivalDate);
+    $date2 = strtotime($departureDate);
+    $stepVal = '+1 day';
+    while ($current <= $date2) {
+        $datesTotal[] = date('Y-m-d', $current);
+        $current = strtotime($stepVal, $current);
     }
-    return true;
-}
+    return $datesTotal;
+};

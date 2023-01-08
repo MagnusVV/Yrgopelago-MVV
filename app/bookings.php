@@ -9,8 +9,65 @@ try {
     throw $e;
 }
 
+// gives access to functions "createFetchBookedDatesQuery" and "styleCalendar" used below
+require __DIR__ . '/hotelFunctions.php';
 
-// Isset-block for checking and creating variables from booking-field in index.php.
+
+// Isset-block for checking and creating variables from booking-form-field in index.php.
+
+// room choice: selection confirmaton:
+$roomNames = array('Rustic', 'Tourist', 'Oh yes, baby!');
+
+if (isset($_POST['roomSelection'])) {
+    $roomSelection = (int)htmlspecialchars($_POST['roomSelection'], FILTER_SANITIZE_NUMBER_INT);
+
+    echo $roomNames[$roomSelection - 1] . '<br>';
+}
+
+// arrival and departure: Check if both dates are set, and if they are already occupied. If occupied, returns to starting page, gives a message and stops further processing on bookings.php:
+if (isset($_POST['arrivalDate']) && isset($_POST['departureDate']) && !empty($_POST['arrivalDate']) && !empty($_POST['departureDate'])) {
+    $arrivalDate = htmlspecialchars($_POST['arrivalDate']);
+    $departureDate = htmlspecialchars($_POST['departureDate']);
+
+
+    // Arrival_date and Departure_date is fetched as an associative array from database:
+    $fetchBookedDatesQuery = createFetchBookedDatesQuery($roomSelection);
+
+    $roomIsBookedCheckStmt = $hotelDatabase->query($fetchBookedDatesQuery);
+
+    $roomIsBookedDates = $roomIsBookedCheckStmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // these arrays will hold all arrival- and departure dates:
+    $arrivalDates = [];
+
+    $departureDates = [];
+
+    // the two arrays are populated with data from the associative array:
+    foreach ($roomIsBookedDates as $dates) {
+
+        $arrivalDates[] = $dates['Arrival_date'];
+        $departureDates[] = $dates['Departure_date'];
+    };
+
+    // ceates a new array where every booked date is a separate value, separated by each booking:
+    $allBookedDatesArr = [];
+
+    for ($i = 0; $i < count($arrivalDates); $i++) {
+        $allBookedDatesArr[] = createSeparateDaysArr($arrivalDates[$i], $departureDates[$i]);
+    };
+
+    foreach ($allBookedDatesArr as $dateChunks) {
+        foreach ($dateChunks as $singleDays) {
+            echo $singleDays . '<br>';
+        };
+    };
+
+    echo '<br>';
+
+    //
+
+    echo $arrivalDate . "<br>" . $departureDate . "<br>";
+}
 
 // transferCode: Check if code given is set, not empty and valid:
 if (isset($_POST['transferCode']) && !empty($_POST['transferCode'])) {
@@ -34,33 +91,18 @@ if (isset($_POST['customer']) && !empty($_POST['customer'])) {
     echo $customer . '<br>';
 }
 
-// room choice: selection confirmaton:
-$roomNames = array('Rustic', 'Tourist', 'Oh yes, baby!');
-
-if (isset($_POST['roomSelection'])) {
-    $roomSelection = (int)htmlspecialchars($_POST['roomSelection'], FILTER_SANITIZE_NUMBER_INT);
-
-    echo $roomNames[$roomSelection - 1] . '<br>';
-}
-
-// arrival and departure: Check if both dates are set:
-if (isset($_POST['arrivalDate']) && isset($_POST['departureDate']) && !empty($_POST['arrivalDate']) && !empty($_POST['departureDate'])) {
-    $arrivalDate = htmlspecialchars($_POST['arrivalDate']);
-    $departureDate = htmlspecialchars($_POST['departureDate']);
-
-    echo $arrivalDate . "<br>" . $departureDate . "<br>";
-}
-
 // extras: List all selected:
 $extrasNames = array('First aid kit', 'Priest', 'Products for nice and vivid dreams');
 
 if (isset($_POST['extrasFirst'])) {
     $extrasFirst = (int)htmlspecialchars($_POST['extrasFirst'], FILTER_SANITIZE_NUMBER_INT);
 
+    // this variable will put "1" as a boolean value in database:
     $extrasFirstIsChoosen = 1;
 
     echo $extrasFirstIsChoosen . '<br>';
 } else {
+    // this variable will put "0" as a boolean value in database:
     $extrasFirstIsChoosen = 0;
     echo $extrasFirstIsChoosen . '<br>';
 }
@@ -98,18 +140,13 @@ if (isset($_POST['totalCost'])) {
 // If transferCode is valid, put all variables in the database. The table is chosen depending on $roomSelesction value.
 
 //
-// (Logic for validation of code goes here)
+// * (Logic for validation of code goes here) *
 //
 
-if ($dateBaseWriteTest === 'yes') {
+/* if ($dateBaseWriteTest === 'yes') {
 
-    function createBookinQuery(int $roomNr)
-    {
-        return
-            'INSERT INTO Room_' . $roomNr . ' (Guest_name, Payment_code, Arrival_date, Departure_date, Extra_feature_1, Extra_feature_2, Extra_feature_3, Total_cost) VALUES (:guest_name, :payment_code, :arrival_date, :departure_date, :extra_feature_1, :extra_feature_2, :extra_feature_3, :total_cost)';
-    };
-
-    $bookingQuery = createBookinQuery($roomSelection);
+    //query modified by room no:
+    $bookingQuery = createBookingQuery($roomSelection);
 
     $insertIntoDb = $hotelDatabase->prepare($bookingQuery);
 
@@ -127,7 +164,7 @@ if ($dateBaseWriteTest === 'yes') {
     echo 'jippi';
 } else {
     echo 'skit';
-}
+} */
 
 
 

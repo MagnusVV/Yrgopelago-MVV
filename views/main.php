@@ -25,50 +25,23 @@ try {
         <section class="calendar">
             <?php
 
-            /* php-calendar creator is called here. Resources from: https://packagist.org/packages/benhall14/php-calendar */
-
+            // php-calendar creator is called here. Resources from: https://packagist.org/packages/benhall14/php-calendar
             use benhall14\phpCalendar\Calendar as Calendar;
 
-            /* function that style and set parameters to calendar */
-
-            function styleCalendar($calendarVarName)
-            {
-                $calendarVarName->stylesheet();
-
-                $calendarVarName->useMondayStartingDate();
-
-                $calendarVarName->useFullDayNames();
-
-                echo $calendarVarName->draw(date('2023-01-01'), 'orange');
-            }
-
-            /* function creates an array which, when input in the calendar "addEvents"-function, is used by that function to mask (change color) on booked dates */
-            function maskBookedDates($bookedDatesArray, $arrayFromDatabase, $calendar)
-            {
-                foreach ($arrayFromDatabase as $dates) {
-                    $bookedDatesArray[] = [
-                        'start' => $dates['Arrival_date'],
-                        'end' => $dates['Departure_date'],
-                        'summary' => '',
-                        'mask' => true
-                    ];
-                }
-
-                /* output array is used in the calendar function */
-                $calendar->addEvents($bookedDatesArray);
-            };
+            // gives access to functions "maskBookedDates" and "styleCalendar" used below
+            require './app/hotelFunctions.php';
 
             ?>
             <section id="calendarForRoom_1">
                 <?php
                 $firstRoomCalendar = new Calendar;
 
-                /* Arrival_date and Departure_date is fetched as an associative array from database */
+                // Arrival_date and Departure_date is fetched as an associative array from database
                 $firstRoomStmt = $hotelDatabase->query('SELECT Arrival_date,Departure_date FROM Room_1 ORDER BY Arrival_date');
 
                 $firstRoomDates = $firstRoomStmt->fetchAll(PDO::FETCH_ASSOC);
 
-                /* array that will hold the calendarevents */
+                // array that will hold the calendarevents
                 $firstRoomBookings = [];
 
                 maskBookedDates($firstRoomBookings, $firstRoomDates, $firstRoomCalendar);

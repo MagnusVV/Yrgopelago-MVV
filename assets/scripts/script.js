@@ -1,6 +1,7 @@
 // THE BOOKING FORM --- --- --->
 
-//  total-cost-FIELD at the bottom of form:
+//  ---
+//  TOTAL-COST-FIELD at the bottom of form:
 
 const totalCost = document.getElementById('totalCost');
 
@@ -26,7 +27,8 @@ function countTotalCost() {
   return totalCost;
 }
 
-//  room-SELECTION:
+//  ---
+//  ROOM-SELECTION:
 
 const roomSelector = document.getElementById('roomSelection');
 
@@ -46,7 +48,8 @@ roomSelector.onchange = () => {
   }
 };
 
-//  date-FIELDS:
+//  ---
+//  DATE-FIELDS (arrival and departure):
 
 const arrivalDate = document.getElementById('arrivalDate');
 
@@ -55,7 +58,9 @@ const departureDate = document.getElementById('departureDate');
 // Function that converts date variable to UTC-format, adds or remove one day, and converts it back to ISO-format. Inspired by: https://stackoverflow.com/questions/60289487/how-do-i-get-the-next-days-date-in-js-in-yyyy-mm-dd-format:
 function addOrSubstractDays(date, int) {
   const modifyDate = new Date(date);
+
   modifyDate.setUTCDate(modifyDate.getUTCDate() + int);
+
   const dayResult = modifyDate.toISOString().substring(0, 10);
 
   return dayResult;
@@ -107,7 +112,8 @@ departureDate.onchange = function setMinArrivalDate() {
   totalCost.value = countTotalCost();
 };
 
-//  extras-SELECTION:
+//  ---
+//  EXTRAS-SELECTION:
 
 const extrasCheckBoxes = document.querySelectorAll('#extras');
 
