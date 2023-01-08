@@ -66,13 +66,14 @@ if (isset($_POST['arrivalDate']) && isset($_POST['departureDate']) && !empty($_P
             foreach ($arrivalDepartureDateSpan as $datesToCheck) {
 
                 if ($datesToCheck === $singleDates) {
-
+                    // alert message if picked dates hits or overlaps already booked dates:
                     $dateFailMessage = "You know, you can't just pick a date like you own the hotel, or something. We do have other guests in that room during, or part of, that period. Please try again.";
 
                     echo '<script>alert("' . $dateFailMessage . '")</script>';
 
                     // redirects back to main page:
                     echo "<script>document.location = '/../index.php'</script>";
+                    // remaining processes are killed for good measure.
                     die();
                 }
             };
