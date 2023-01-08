@@ -20,8 +20,6 @@ $roomNames = array('Rustic', 'Tourist', 'Oh yes, baby!');
 
 if (isset($_POST['roomSelection'])) {
     $roomSelection = (int)htmlspecialchars($_POST['roomSelection'], FILTER_SANITIZE_NUMBER_INT);
-
-    echo $roomNames[$roomSelection - 1] . '<br>';
 }
 
 // arrival and departure: Check if both dates are set, and if they are already occupied. If occupied, returns to starting page, gives a message and stops further processing on bookings.php:
@@ -79,87 +77,72 @@ if (isset($_POST['arrivalDate']) && isset($_POST['departureDate']) && !empty($_P
             };
         };
     };
-
-    //
-
-    echo $arrivalDate . "<br>" . $departureDate . "<br>";
 }
 
 // transferCode: Check if code given is set, not empty and valid:
 if (isset($_POST['transferCode']) && !empty($_POST['transferCode'])) {
     $transferCode = htmlspecialchars(trim($_POST['transferCode'], ENT_QUOTES));
 
-    echo $transferCode . '<br>';
-
     if (strlen($transferCode) > 1) {
         $dateBaseWriteTest = "yes";
-        echo $dateBaseWriteTest . '<br>';
     } else {
         $dateBaseWriteTest = "no";
-        echo $dateBaseWriteTest . '<br>';
     }
 }
 
 // customer: Check if string is set and not empty:
 if (isset($_POST['customer']) && !empty($_POST['customer'])) {
     $customer = htmlspecialchars(trim($_POST['customer'], ENT_QUOTES));
-
-    echo $customer . '<br>';
 }
 
 // extras: List all selected:
 $extrasNames = array('First aid kit', 'Priest', 'Products for nice and vivid dreams');
+
+// this array will hold the selected extras:
+$selectedExtraFeatures = [];
 
 if (isset($_POST['extrasFirst'])) {
     $extrasFirst = (int)htmlspecialchars($_POST['extrasFirst'], FILTER_SANITIZE_NUMBER_INT);
 
     // this variable will put "1" as a boolean value in database:
     $extrasFirstIsChoosen = 1;
-
-    echo $extrasFirstIsChoosen . '<br>';
+    $selectedExtraFeatures[] = $extrasNames[$extrasFirst - 1];
 } else {
     // this variable will put "0" as a boolean value in database:
     $extrasFirstIsChoosen = 0;
-    echo $extrasFirstIsChoosen . '<br>';
 }
 
 if (isset($_POST['extrasSecond'])) {
     $extrasSecond = (int)htmlspecialchars($_POST['extrasSecond'], FILTER_SANITIZE_NUMBER_INT);
 
     $extrasSecondIsChoosen = 1;
-
-    echo $extrasSecondIsChoosen . '<br>';
+    $selectedExtraFeatures[] = $extrasNames[$extrasSecond - 1];
 } else {
     $extrasSecondIsChoosen = 0;
-    echo $extrasSecondIsChoosen . '<br>';
 }
 
 if (isset($_POST['extrasThird'])) {
     $extrasThird = (int)htmlspecialchars($_POST['extrasThird'], FILTER_SANITIZE_NUMBER_INT);
 
     $extrasThirdIsChoosen = 1;
-
-    echo $extrasThirdIsChoosen . '<br>';
+    $selectedExtraFeatures[] = $extrasNames[$extrasThird - 1];
 } else {
     $extrasThirdIsChoosen = 0;
-    echo $extrasThirdIsChoosen . '<br>';
 }
 
 // total cost with room, extras, no. of days:
 if (isset($_POST['totalCost'])) {
     $totalCost = (int)filter_var($_POST['totalCost'], FILTER_SANITIZE_NUMBER_INT);
-
-    echo $totalCost . '<br>';
 }
 
 
-// If transferCode is valid, put all variables in the database. The table is chosen depending on $roomSelesction value.
+// If transferCode is valid, put all variables in the database. The table is chosen depending on $roomSelection value.
 
 //
 // * (Logic for validation of code goes here) *
 //
 
-if ($dateBaseWriteTest === 'yes') {
+/* if ($dateBaseWriteTest === 'yes') {
 
     //query modified by room no:
     $bookingQuery = createBookingQuery($roomSelection);
@@ -176,12 +159,38 @@ if ($dateBaseWriteTest === 'yes') {
     $insertIntoDb->bindParam(':total_cost', $totalCost, PDO::PARAM_INT);
 
     $insertIntoDb->execute();
-
-    echo 'jippi';
 } else {
-    echo 'skit';
-}
+    echo 'Catastrophic booking error!';
+} */
+
+// ---
+// JSON-response for succesful booking:
+
+// the booking reponse before conversion:
+$bookingResponse = [
+    'Island' => 'Ilha das mil pragas',
+    'The hotel' => 'Terminal Hoteleiro',
+    'Your room choice' => $roomNames[$roomSelection - 1],
+    'Arriving' => $arrivalDate,
+    'Departing' => $departureDate, 'Total amount paid' => $totalCost . '$', 'No. of stars' => '☆☆',
+    'Extra features selected' => $selectedExtraFeatures,
+    'A (very) few words from the owner' => 'We are very much looking forward to your stay here. And remember, if you survive this visit to Ilha das mil pragas, you can survive anything!',
+];
 
 
+$jsonbookingResponse = json_encode($bookingResponse);
 
-// $name = htmlspecialchars($name, ENT_QUOTES);
+header('Content-Type: application/json');
+
+echo $jsonbookingResponse;
+
+/* Your hotel MUST give a response to every succesful booking. The response should be in json and MUST contain the following properties:
+island
+hotel
+arrival_date
+departure_date
+total_cost
+stars
+features
+additional_info. (This last property is where you can put in a personal greeting from your hotel, an image URL, link to a youtube video or whatever you like.)
+ */
