@@ -21,6 +21,15 @@ try {
 
     <section class="actions">
 
+        <!-- Images and short info about rooms -->
+        <section class="roomPreviews">
+
+            <div id="room-1"></div>
+            <div id="room-2"></div>
+            <div id="room-3"></div>
+
+        </section>
+
         <!-- the calendars -->
         <section class="calendar">
             <?php
@@ -85,7 +94,7 @@ try {
         </section>
 
         <!-- the booking-form  -->
-        <section class="booking-form">
+        <section class="bookingForm">
 
             <h3>Book your stay here:</h3>
             <form action="./app/bookings.php" method="post">
@@ -138,9 +147,7 @@ try {
                 </p>
 
                 <!-- Total cost -->
-                <br>
                 <p>Total sum: <input type="text" size="3" name="totalCost" id="totalCost" value="" readonly />$</p>
-                <br>
 
                 <!-- Button for submitting booking values to app/bookings.php -->
                 <p>
@@ -151,14 +158,6 @@ try {
 
         </section>
 
-        <!-- Images and short info about rooms -->
-        <section class="room-previws">
-
-            <div id="room-1"></div>
-            <div id="room-2"></div>
-            <div id="room-3"></div>
-
-        </section>
     </section>
 
 </main>

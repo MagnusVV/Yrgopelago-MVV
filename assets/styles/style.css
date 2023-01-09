@@ -1,0 +1,9 @@
+.actions {
+  display: grid;
+  grid-template: auto auto / 4fr 3fr;
+}
+
+.calendar,
+.roomPreviews {
+  width: 50%;
+}

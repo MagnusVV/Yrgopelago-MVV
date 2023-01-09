@@ -21,17 +21,21 @@
   font-weight: 400;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Moon+Dance&display=swap');
+
 h1,
-h2 {
-  font-family: 'Oswald-medium';
+h2,
+h3 {
+  font-family: 'Moon Dance', cursive;
 }
 
-h3 {
-  font-family: 'Oswald-regular';
+h1 {
+  font-size: 3rem;
 }
 
 :root {
   font-family: 'Montserrat-regular';
+  color: white;
 }
 
 /* --- --- --- --- --- */
@@ -41,6 +45,9 @@ h3 {
 }
 
 body {
+  background-image: url('../images/yosh-ginsu-qexZLgMcbPc-unsplash.jpg');
+  background-repeat: no-repeat;
+  background-color: orangered;
   margin: 0 auto;
   height: 100vh;
   display: flex;

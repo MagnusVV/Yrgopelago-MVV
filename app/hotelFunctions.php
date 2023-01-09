@@ -68,6 +68,6 @@ function failMessage($failMessage)
     echo '<script>alert("' . $failMessage . '")</script>';
     // redirects back to main page:
     echo "<script>document.location = '../index.php'</script>";
-    // remaining processes are killed for good measure.
+    // remaining processes are killed, so a duplicate booking can not proceed.
     die();
 };

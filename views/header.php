@@ -15,7 +15,7 @@
 <body>
     <header>
         <section class="hero">
-            <h1>Yrgopelago-MVV</h1>
+            <h1>Welcome to Terminal Hoteleiro, here at beautiful Ilha das mil pragas!</h1>
         </section>
 
         <nav></nav>
