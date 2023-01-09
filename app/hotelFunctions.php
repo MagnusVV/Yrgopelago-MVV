@@ -61,3 +61,13 @@ function createSeparateDaysArr($arrivalDate, $departureDate)
     }
     return $datesTotal;
 };
+
+// Displays a window alert on error, and return the user to the index page.
+function failMessage($failMessage)
+{
+    echo '<script>alert("' . $failMessage . '")</script>';
+    // redirects back to main page:
+    echo "<script>document.location = '../index.php'</script>";
+    // remaining processes are killed for good measure.
+    die();
+};

@@ -13,7 +13,9 @@ try {
 require __DIR__ . '/hotelFunctions.php';
 
 
-// Isset-block for checking and creating variables from booking-form-field in index.php.
+//
+// Isset-block for checking and creating variables from booking-form-field in index.php:
+//
 
 // room choice: selection confirmaton:
 $roomNames = array('Rustic', 'Tourist', 'Oh yes, baby!');
@@ -67,12 +69,7 @@ if (isset($_POST['arrivalDate']) && isset($_POST['departureDate']) && !empty($_P
                     // alert message if picked dates hits or overlaps already booked dates:
                     $dateFailMessage = "You know, you can't just pick a date like you own the hotel, or something. We do have other guests in that room during, or part of, that period. Please try again.";
 
-                    echo '<script>alert("' . $dateFailMessage . '")</script>';
-
-                    // redirects back to main page:
-                    echo "<script>document.location = '/../index.php'</script>";
-                    // remaining processes are killed for good measure.
-                    die();
+                    failMessage($dateFailMessage);
                 }
             };
         };
@@ -86,7 +83,10 @@ if (isset($_POST['transferCode']) && !empty($_POST['transferCode'])) {
     if (strlen($transferCode) > 1) {
         $dateBaseWriteTest = "yes";
     } else {
-        $dateBaseWriteTest = "no";
+        // alert message if transferCode (payment) is invalid:
+        $codeFailMessage = "You should be more careful with money. Please go back and use a correct payment code";
+
+        failMessage($codeFailMessage);
     }
 }
 
@@ -168,29 +168,20 @@ if ($dateBaseWriteTest === 'yes') {
 
 // the booking reponse before conversion:
 $bookingResponse = [
-    'Island' => 'Ilha das mil pragas',
-    'The hotel' => 'Terminal Hoteleiro',
+    'island' => 'Ilha das mil pragas',
+    'hotel' => 'Terminal Hoteleiro',
     'Your room choice' => $roomNames[$roomSelection - 1],
-    'Arriving' => $arrivalDate,
-    'Departing' => $departureDate, 'Total amount paid' => $totalCost . '$', 'No. of stars' => '☆☆',
-    'Extra features selected' => $selectedExtraFeatures,
-    'A (very) few words from the owner' => 'We are very much looking forward to your stay here. And remember, if you survive this visit to Ilha das mil pragas, you can survive anything!',
+    'arrival_date' => $arrivalDate,
+    'departure_date' => $departureDate,
+    'total_cost' => $totalCost,
+    'stars' => 2,
+    'features' => $selectedExtraFeatures,
+    'additional_info' => 'We are very much looking forward to your stay here. And remember, if you survive this visit to Ilha das mil pragas, you can survive anything!',
 ];
 
-
+// the booking reponse being converted to .json:
 $jsonbookingResponse = json_encode($bookingResponse);
 
 header('Content-Type: application/json');
 
 echo $jsonbookingResponse;
-
-/* Your hotel MUST give a response to every succesful booking. The response should be in json and MUST contain the following properties:
-island
-hotel
-arrival_date
-departure_date
-total_cost
-stars
-features
-additional_info. (This last property is where you can put in a personal greeting from your hotel, an image URL, link to a youtube video or whatever you like.)
- */
