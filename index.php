@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
+//
+
 // this... supposedly autoloads needed stuff (dotenv, Guzzle, "calendar"?)
 
 require __DIR__ . '/vendor/autoload.php';
-
-//
 
 // the site's landing page
 

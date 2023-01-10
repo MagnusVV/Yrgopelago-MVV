@@ -1,5 +1,15 @@
 <?php
 
+// gives access to functions "createFetchBookedDatesQuery" and "styleCalendar" used below
+require __DIR__ . '/hotelFunctions.php';
+
+// this... supposedly autoloads needed stuff (dotenv, Guzzle, "calendar"?)
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
+
 try {
     $hotelDatabase = new PDO('sqlite:./database/hoteldatabase.db');
     $hotelDatabase->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -8,10 +18,6 @@ try {
     echo 'Connection failed:';
     throw $e;
 }
-
-// gives access to functions "createFetchBookedDatesQuery" and "styleCalendar" used below
-require __DIR__ . '/hotelFunctions.php';
-
 
 //
 // Isset-block for checking and creating variables from booking-form-field in index.php:
@@ -76,20 +82,6 @@ if (isset($_POST['arrivalDate']) && isset($_POST['departureDate']) && !empty($_P
     };
 }
 
-// transferCode: Check if code given is set, not empty and valid:
-if (isset($_POST['transferCode']) && !empty($_POST['transferCode'])) {
-    $transferCode = htmlspecialchars(trim($_POST['transferCode'], ENT_QUOTES));
-
-    if (strlen($transferCode) > 1) {
-        $dateBaseWriteTest = "yes";
-    } else {
-        // alert message if transferCode (payment) is invalid:
-        $codeFailMessage = "You should be more careful with money. Please go back and use a correct payment code";
-
-        failMessage($codeFailMessage);
-    }
-}
-
 // customer: Check if string is set and not empty:
 if (isset($_POST['customer']) && !empty($_POST['customer'])) {
     $customer = htmlspecialchars(trim($_POST['customer'], ENT_QUOTES));
@@ -139,7 +131,55 @@ if (isset($_POST['totalCost'])) {
 // If transferCode is valid, put all variables in the database. The table is chosen depending on $roomSelection value.
 
 //
-// * (Logic for validation of code goes here) *
+// transferCode: Check if code given is set, not empty and valid:
+if (isset($_POST['transferCode']) && !empty($_POST['transferCode'])) {
+    $transferCode = htmlspecialchars(trim($_POST['transferCode'], ENT_QUOTES));
+
+    if (isValidUuid($transferCode)) {
+
+        $client = new GuzzleHttp\Client();
+        $options = [
+            'form_params' => [
+                "transferCode" => $transferCode, "totalCost" => $totalCost
+            ]
+        ];
+
+        try {
+            $response = $client->post("https://www.yrgopelago.se/centralbank/transferCode", $options);
+            $response = $response->getBody()->getContents();
+            $response = json_decode($response, true);
+
+            // var_dump($response);
+
+            if (isset($response['transferCode']) && isset($response['amount']) && $response['amount'] >= $totalCost) {
+
+                $user = 'Magnus';
+
+                $getMonies = [
+                    'form_params' => [
+                        "user" => $user, "transferCode" => $transferCode
+                    ]
+                ];
+                try {
+                    $getPaidResponse = $client->post("https://www.yrgopelago.se/centralbank/deposit", $getMonies);
+                    $getPaidResponse = $getPaidResponse->getBody()->getContents();
+                    $getPaidResponse = json_decode($getPaidResponse, true);
+                } catch (\Exception $e) {
+                    return "Error occured!" . $e;
+                };
+                $dateBaseWriteTest = "yes";
+            } else {
+                // alert message if transferCode (payment) is invalid:
+                $codeFailMessage = "You should be more careful with money. Please go back and use a correct payment code";
+
+                failMessage($codeFailMessage);
+            };
+        } catch (\Exception $e) {
+            return "Error occured!" . $e;
+        }
+    }
+}
+
 //
 
 if ($dateBaseWriteTest === 'yes') {

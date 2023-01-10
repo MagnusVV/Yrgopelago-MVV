@@ -71,3 +71,12 @@ function failMessage($failMessage)
     // remaining processes are killed, so a duplicate booking can not proceed.
     die();
 };
+
+// Function stolen from Hans. It checks if the transferCode is in a valid format:
+function isValidUuid(string $uuid): bool
+{
+    if (!is_string($uuid) || (preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/', $uuid) !== 1)) {
+        return false;
+    }
+    return true;
+}
