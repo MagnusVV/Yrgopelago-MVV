@@ -4,6 +4,23 @@
 }
 
 .calendar,
-.roomPreviews {
-  width: 50%;
+.room-previews {
+  width: 100%;
+}
+
+.room-previews {
+  display: flex;
+  flex-direction: column;
+}
+
+.room-image-container {
+  width: 75%;
+  height: 40vh;
+}
+
+.room-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }

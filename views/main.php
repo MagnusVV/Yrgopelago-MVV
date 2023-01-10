@@ -22,11 +22,22 @@ try {
     <section class="actions">
 
         <!-- Images and short info about rooms -->
-        <section class="roomPreviews">
+        <section class="room-previews">
 
-            <div id="room-1"></div>
-            <div id="room-2"></div>
-            <div id="room-3"></div>
+            <div id="room-1">
+                <h2>Rustic, the choice of the price conscious!</h2>
+                <div class="room-image-container ">
+                    <img class="room-image" src="../assets/images/yente-van-eynde-OmcrNPadXR4-unsplash.jpg" alt="A decripit room">
+                </div>
+            </div>
+            <div id="room-2">
+                <h2>Tourist, the choice of the explorer!</h2>
+                <div class="room-image-container "><img class="room-image" src="../assets/images/days-inn.webp" alt="A decripit room"></div>
+            </div>
+            <div id="room-3">
+                <h2>Oh yes, baby! If you never feel like leaving your room!</h2>
+                <div class="room-image-container "><img class="room-image" src="../assets/images/pexels-carmen-cobo-1103808.jpg" alt="A decripit room"></div>
+            </div>
 
         </section>
 
