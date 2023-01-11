@@ -1,23 +1,20 @@
 /* SPECIFIC STYLING */
 
-.actions {
-  display: grid;
-  grid-template: auto auto/ auto;
-  align-items: center;
-}
-
 .room-previews {
   width: 100%;
+  height: auto;
   display: grid;
-  grid-template: 1fr 1fr 1fr/ 1fr;
+  grid-template: 1fr / 1fr;
 }
 
-#room-1,
-#room-2,
-#room-3 {
+.room {
   display: grid;
   align-items: end;
-  grid-template: 1fr / 3fr 3fr;
+  grid-template: 1fr / 1fr 1fr;
+}
+
+.room-invisible {
+  display: none;
 }
 
 .room-image-container {
@@ -36,6 +33,9 @@
 table {
   height: 50vh;
   border: 5px solid antiquewhite;
+}
+
+.booking-form {
 }
 
 /* --- --- --- --- --- */

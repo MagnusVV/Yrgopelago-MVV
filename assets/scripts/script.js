@@ -35,11 +35,19 @@ const roomSelector = document.getElementById('roomSelection');
 // this is just the default start value (room cost)
 let roomCost = parseInt(roomSelector.value);
 
+// the use of this variable is to make current room visible, and the others visible
+const roomActive = document.querySelectorAll('.room');
+
 // getting the running value (room cost) from the selector, and adding it to total cost
 
 roomSelector.onchange = () => {
+  roomActive.forEach((eachRoom) => {
+    eachRoom.classList.add('room-invisible');
+  });
+
   for (let i = 0; i < roomSelector.length; i++) {
     if (roomSelector[i].selected) {
+      roomActive[i].classList.toggle('room-invisible');
       roomCost = parseInt(roomSelector[i].value);
 
       totalCostParams.roomCostSum = roomCost;
