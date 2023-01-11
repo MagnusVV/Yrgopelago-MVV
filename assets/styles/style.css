@@ -1,26 +1,45 @@
+/* SPECIFIC STYLING */
+
 .actions {
   display: grid;
-  grid-template: auto auto / 4fr 3fr;
+  grid-template: auto auto/ auto;
+  align-items: center;
 }
 
-.calendar,
 .room-previews {
   width: 100%;
+  display: grid;
+  grid-template: 1fr 1fr 1fr/ 1fr;
 }
 
-.room-previews {
-  display: flex;
-  flex-direction: column;
+#room-1,
+#room-2,
+#room-3 {
+  display: grid;
+  align-items: end;
+  grid-template: 1fr / 3fr 3fr;
 }
 
 .room-image-container {
-  width: 75%;
-  height: 40vh;
+  width: 65%;
+  height: 50vh;
 }
 
 .room-image {
   width: 100%;
   height: 100%;
+  border: 5px solid antiquewhite;
   object-fit: cover;
   object-position: center;
 }
+
+table {
+  height: 50vh;
+  border: 5px solid antiquewhite;
+}
+
+/* --- --- --- --- --- */
+
+/* UNIVERSAL CLASSES */
+
+/* --- --- --- --- --- */

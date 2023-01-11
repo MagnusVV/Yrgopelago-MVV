@@ -1,20 +1,29 @@
 /* FONTS USED */
+
 @import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Moon+Dance&display=swap');
+
+/* --- --- --- --- --- */
+
+/* GLOBAL FONT STYLING */
 
 h1,
 h2,
 h3 {
   font-family: 'Moon Dance', cursive;
+  color: antiquewhite;
+  /* Shadow-values borrowed from: https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow */
+  text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 5rem;
 }
 
 h2 {
   font-size: 2rem;
+  margin: 1rem 0;
 }
 
 h3 {
@@ -28,9 +37,19 @@ h3 {
 
 /* --- --- --- --- --- */
 
+/* GLOBAL STYLING */
+
 * {
   box-sizing: border-box;
 }
+
+/* Removing the "bounce effect" during scrolling. (https://gist.github.com/lawrencehui/ceaf2f42d6fc0d3db1d3) */
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* --- */
 
 body {
   background-image: url('../images/yosh-ginsu-qexZLgMcbPc-unsplash.jpg');
@@ -38,7 +57,10 @@ body {
   background-color: orangered;
   width: 100vw;
   margin: 0 auto;
+  /* Removing the "bounce effect" during scrolling.*/
   height: 100vh;
+  overflow: auto;
+  /* --- */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -49,3 +71,4 @@ main,
 footer {
   padding: 0 1rem;
 }
+/* --- --- --- --- --- */

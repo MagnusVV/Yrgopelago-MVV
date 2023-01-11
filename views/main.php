@@ -9,6 +9,13 @@ try {
     throw $e;
 }
 
+
+// php-calendar creator is called here. Resources from: https://packagist.org/packages/benhall14/php-calendar
+use benhall14\phpCalendar\Calendar as Calendar;
+
+// gives access to functions "maskBookedDates" and "styleCalendar" used below
+require './app/hotelFunctions.php';
+
 ?>
 
 <main>
@@ -21,87 +28,80 @@ try {
 
     <section class="actions">
 
-        <!-- Images and short info about rooms -->
+        <!-- Images and short info about rooms, and the calendar. -->
         <section class="room-previews">
 
             <div id="room-1">
-                <h2>Rustic, the choice of the price conscious!</h2>
-                <div class="room-image-container ">
-                    <img class="room-image" src="../assets/images/yente-van-eynde-OmcrNPadXR4-unsplash.jpg" alt="A decripit room">
+                <div class="room-info">
+                    <h2>Rustic, the choice of the price conscious!</h2>
+                    <div class="room-image-container ">
+                        <img class="room-image" src="../assets/images/yente-van-eynde-OmcrNPadXR4-unsplash.jpg" alt="A decripit room">
+                    </div>
                 </div>
+                <section id="calendarForRoom_1">
+                    <?php
+                    $firstRoomCalendar = new Calendar;
+
+                    // Arrival_date and Departure_date is fetched as an associative array from database
+                    $firstRoomStmt = $hotelDatabase->query('SELECT Arrival_date,Departure_date FROM Room_1 ORDER BY Arrival_date');
+
+                    $firstRoomDates = $firstRoomStmt->fetchAll(PDO::FETCH_ASSOC);
+
+                    // array that will hold the calendarevents
+                    $firstRoomBookings = [];
+
+                    maskBookedDates($firstRoomBookings, $firstRoomDates, $firstRoomCalendar);
+
+                    styleCalendar($firstRoomCalendar);
+
+                    ?>
+                </section>
             </div>
             <div id="room-2">
-                <h2>Tourist, the choice of the explorer!</h2>
-                <div class="room-image-container "><img class="room-image" src="../assets/images/days-inn.webp" alt="A decripit room"></div>
+                <div class="room-info">
+                    <h2>Tourist, the choice of the explorer!</h2>
+                    <div class="room-image-container "><img class="room-image" src="../assets/images/days-inn.webp" alt="A less than tasteful hotel room"></div>
+                </div>
+                <section id="calendarForRoom_2">
+                    <?php
+                    $secondRoomCalendar = new Calendar;
+
+                    $secondRoomStmt = $hotelDatabase->query('SELECT Arrival_date,Departure_date FROM Room_2 ORDER BY Arrival_date');
+
+                    $secondRoomDates = $secondRoomStmt->fetchAll(PDO::FETCH_ASSOC);
+
+                    $secondRoomBookings = [];
+
+                    maskBookedDates($secondRoomBookings, $secondRoomDates, $secondRoomCalendar);
+
+                    styleCalendar($secondRoomCalendar);
+
+                    ?>
+                </section>
             </div>
             <div id="room-3">
-                <h2>Oh yes, baby! If you never feel like leaving your room!</h2>
-                <div class="room-image-container "><img class="room-image" src="../assets/images/pexels-carmen-cobo-1103808.jpg" alt="A decripit room"></div>
+                <div class="room-info">
+                    <h2>Oh yes, baby! If you never feel like leaving your room!</h2>
+                    <div class="room-image-container "><img class="room-image" src="../assets/images/pexels-carmen-cobo-1103808.jpg" alt="A badly cropped picture showing the outside from a window"></div>
+                </div>
+                <section id="calendarForRoom_3">
+                    <?php
+                    $thirdRoomCalendar = new Calendar;
+
+                    $thirdRoomStmt = $hotelDatabase->query('SELECT Arrival_date,Departure_date FROM Room_3 ORDER BY Arrival_date');
+
+                    $thirdRoomDates = $thirdRoomStmt->fetchAll(PDO::FETCH_ASSOC);
+
+                    $thirdRoomBookings = [];
+
+                    maskBookedDates($thirdRoomBookings, $thirdRoomDates, $thirdRoomCalendar);
+
+                    styleCalendar($thirdRoomCalendar);
+
+                    ?>
+                </section>
             </div>
 
-        </section>
-
-        <!-- the calendars -->
-        <section class="calendar">
-            <?php
-
-            // php-calendar creator is called here. Resources from: https://packagist.org/packages/benhall14/php-calendar
-            use benhall14\phpCalendar\Calendar as Calendar;
-
-            // gives access to functions "maskBookedDates" and "styleCalendar" used below
-            require './app/hotelFunctions.php';
-
-            ?>
-            <section id="calendarForRoom_1">
-                <?php
-                $firstRoomCalendar = new Calendar;
-
-                // Arrival_date and Departure_date is fetched as an associative array from database
-                $firstRoomStmt = $hotelDatabase->query('SELECT Arrival_date,Departure_date FROM Room_1 ORDER BY Arrival_date');
-
-                $firstRoomDates = $firstRoomStmt->fetchAll(PDO::FETCH_ASSOC);
-
-                // array that will hold the calendarevents
-                $firstRoomBookings = [];
-
-                maskBookedDates($firstRoomBookings, $firstRoomDates, $firstRoomCalendar);
-
-                styleCalendar($firstRoomCalendar);
-
-                ?>
-            </section>
-            <section id="calendarForRoom_2">
-                <?php
-                $secondRoomCalendar = new Calendar;
-
-                $secondRoomStmt = $hotelDatabase->query('SELECT Arrival_date,Departure_date FROM Room_2 ORDER BY Arrival_date');
-
-                $secondRoomDates = $secondRoomStmt->fetchAll(PDO::FETCH_ASSOC);
-
-                $secondRoomBookings = [];
-
-                maskBookedDates($secondRoomBookings, $secondRoomDates, $secondRoomCalendar);
-
-                styleCalendar($secondRoomCalendar);
-
-                ?>
-            </section>
-            <section id="calendarForRoom_3">
-                <?php
-                $thirdRoomCalendar = new Calendar;
-
-                $thirdRoomStmt = $hotelDatabase->query('SELECT Arrival_date,Departure_date FROM Room_3 ORDER BY Arrival_date');
-
-                $thirdRoomDates = $thirdRoomStmt->fetchAll(PDO::FETCH_ASSOC);
-
-                $thirdRoomBookings = [];
-
-                maskBookedDates($thirdRoomBookings, $thirdRoomDates, $thirdRoomCalendar);
-
-                styleCalendar($thirdRoomCalendar);
-
-                ?>
-            </section>
         </section>
 
         <!-- the booking-form  -->
