@@ -35,7 +35,7 @@ require './app/hotelFunctions.php';
                 <div class="room-info">
                     <h2>Rustic, the choice of the price conscious!</h2>
                     <div class="room-image-container ">
-                        <img class="room-image" src="../assets/images/yente-van-eynde-OmcrNPadXR4-unsplash.jpg" alt="A decripit room">
+                        <img class="room-image" src="assets/images/yente-van-eynde-OmcrNPadXR4-unsplash.jpg" />
                     </div>
                 </div>
                 <section id="calendarForRoom_1">
@@ -60,7 +60,7 @@ require './app/hotelFunctions.php';
             <div id="room-2">
                 <div class="room-info">
                     <h2>Tourist, the choice of the explorer!</h2>
-                    <div class="room-image-container "><img class="room-image" src="../assets/images/days-inn.webp" alt="A less than tasteful hotel room"></div>
+                    <div class="room-image-container "><img class="room-image" src="assets/images/pexels-carmen-cobo-1103808.jpg" alt="A badly cropped picture showing the outside from a window"></div>
                 </div>
                 <section id="calendarForRoom_2">
                     <?php
@@ -82,7 +82,7 @@ require './app/hotelFunctions.php';
             <div id="room-3">
                 <div class="room-info">
                     <h2>Oh yes, baby! If you never feel like leaving your room!</h2>
-                    <div class="room-image-container "><img class="room-image" src="../assets/images/pexels-carmen-cobo-1103808.jpg" alt="A badly cropped picture showing the outside from a window"></div>
+                    <div class="room-image-container "><img class="room-image" src="assets/images/days-inn.webp" alt="A less than tasteful hotel room"></div>
                 </div>
                 <section id="calendarForRoom_3">
                     <?php
