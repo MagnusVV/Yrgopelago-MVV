@@ -1,4 +1,4 @@
-WHY NOT A GIF HERE? TO SET THE MODE.
+![Volcano](https://media.giphy.com/media/r5gHt2TCIiHK0/giphy.mp4)
 
 # Ilha das mil pragas
 
@@ -10,7 +10,7 @@ Our fine hotel is your end station on our beautiful island. It has been for quit
 
 # Instructions
 
-If your project requires some installation or similar, please inform your user 'bout it. For instance, if you want a more decent indentation of your .php files, you could edit [.editorconfig]('/.editorconfig').
+Nothing special to mention, except that it uses the Guzzle package and the PHP-calendar package from benhall14.
 
 # Code review
 
