@@ -1,6 +1,15 @@
 /* SPECIFIC STYLING */
 
+.about {
+  margin: 0 30%;
+  font-style: oblique;
+  font-size: large;
+  line-height: 2rem;
+  text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+}
+/* Rooms and calendar */
 .room-previews {
+  margin: 3rem 0;
   width: 100%;
   height: auto;
   display: grid;
@@ -36,10 +45,48 @@ table {
 }
 
 .booking-form {
+  margin: 2rem 0 5rem 2rem;
 }
 
-/* --- --- --- --- --- */
+/* the submit-button*/
+.submit-button {
+  background-color: antiquewhite;
+  border-radius: 5%;
+  border: none;
+  color: orangered;
+  padding: 0.5rem 1.5rem;
+  font-family: 'Moon Dance', cursive;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+}
 
-/* UNIVERSAL CLASSES */
+.submit-button:hover {
+  background-color: rgb(64, 64, 175);
+}
 
-/* --- --- --- --- --- */
+/* Footer */
+footer {
+  background-color: orangered;
+  display: grid;
+  grid-template: auto auto / repeat(3, 1fr);
+}
+
+#more-info,
+#contact,
+#work-for-us {
+  height: 7rem;
+  justify-self: center;
+  text-align: center;
+  font-size: x-large;
+  display: flex;
+  align-items: center;
+}
+
+/* For fun*/
+#more-info:hover,
+#contact:hover,
+#work-for-us:hover {
+  color: orangered;
+}

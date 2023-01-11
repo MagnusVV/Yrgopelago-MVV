@@ -217,6 +217,11 @@ if (isset($_POST['transferCode']) && !empty($_POST['transferCode'])) {
 
             failMessage($codeFailMessage);
         }
+    } else {
+        // alert message if incorrect code format is used:
+        $codeFailMessage = "That is NOT a correct kind of code. Please try again";
+
+        failMessage($codeFailMessage);
     }
 } else {
     echo 'Catastrophic booking error!';

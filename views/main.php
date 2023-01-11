@@ -22,7 +22,9 @@ require './app/hotelFunctions.php';
 
     <!-- "ABOUT"-SECTION -->
 
-    <section class="about"></section>
+    <section class="about">
+        <p>Welcome! Between the volcanic embers dancing in the skies, the gigantic mosquitos, and tropical maladies you probably never heard of, we assure you'll get an experience you won't forget! Pack your best sunblocker (we are not joking), a good deal of fluid replacements and your biggest smile! No need to bring a travel insurance, because you surely won't need it!</p>
+    </section>
 
     <!--ROOM-PREVIEWS -->
 
@@ -112,19 +114,19 @@ require './app/hotelFunctions.php';
 
             <!-- Value code from central bank goes here: -->
             <p>
-                <label for="transferCode" class="">Input value-code</label><br>
-                <input type="text" name="transferCode" placeholder="$$" id="transferCode" class="" required>
+                <label for="transferCode">Input value-code</label><br>
+                <input type="text" name="transferCode" placeholder="$$" id="transferCode" required>
             </p>
 
             <!-- Customer name: -->
             <p>
-                <label for="transferCode" class="">Your name</label><br>
-                <input type="text" name="customer" placeholder="Given or other" id="customer" class="" required>
+                <label for="transferCode">Your name</label><br>
+                <input type="text" name="customer" placeholder="Given or other" id="customer" required>
             </p>
 
             <!-- Select room -->
             <p>
-                <label for="roomSelect" class="">Select room</label><br>
+                <label for="roomSelect">Select room</label><br>
                 <select name="roomSelection" id="roomSelection">
                     <option id="roomSelect1" value="1">Rustic ($1/day)</option>
                     <option id="roomSelect2" value="2">Tourist ($2/day)</option>
@@ -134,33 +136,35 @@ require './app/hotelFunctions.php';
 
             <!-- Choose arrival date: -->
             <p>
-                <label for="arrivalDate" class="">Arrival date</label><br>
-                <input type="date" name="arrivalDate" id="arrivalDate" class="" min="2023-01-01" max="2023-01-31" required>
+                <label for="arrivalDate">Arrival date</label><br>
+                <input type="date" name="arrivalDate" id="arrivalDate" min="2023-01-01" max="2023-01-31" required>
             </p>
 
             <!-- Choose departure date: -->
             <p>
-                <label for="departureDate" class="">Departure date</label><br>
-                <input type="date" name="departureDate" id="departureDate" class="" min="2023-01-01" max="2023-01-31" required>
+                <label for="departureDate">Departure date</label><br>
+                <input type="date" name="departureDate" id="departureDate" min="2023-01-01" max="2023-01-31" required>
             </p>
 
             <!-- Extras -->
             <p>
-                <label for="extras" class="">Choose extra features, if desired<br>
+                <label for="extras">Choose extra features, if desired<br>
 
-                    <input type="checkbox" value="1" name="extrasFirst" id="extras" class=""> First aid kit ($1/day)<br>
-                    <input type="checkbox" value="2" name="extrasSecond" id="extras" class=""> Priest ($2/day)<br>
-                    <input type="checkbox" value="3" name="extrasThird" id="extras" class=""> Products for nice and vivid dreams ($3/day)<br>
+                    <input type="checkbox" value="1" name="extrasFirst" id="extras"> First aid kit ($1/day)<br>
+                    <input type="checkbox" value="2" name="extrasSecond" id="extras"> Priest ($2/day)<br>
+                    <input type="checkbox" value="3" name="extrasThird" id="extras"> Products for nice and vivid dreams ($3/day)<br>
 
                 </label>
             </p>
+            <br>
 
             <!-- Total cost -->
             <p>Total sum: <input type="text" size="3" name="totalCost" id="totalCost" value="" readonly />$</p>
+            <br>
 
             <!-- Button for submitting booking values to app/bookings.php -->
             <p>
-                <button type="submit" class="submitButton">Voila!</button>
+                <button type="submit" class="submit-button">Voila!</button>
             </p>
 
         </form>

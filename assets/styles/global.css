@@ -12,7 +12,6 @@ h1,
 h2,
 h3 {
   font-family: 'Moon Dance', cursive;
-  color: antiquewhite;
   /* Shadow-values borrowed from: https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow */
   text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
 }
@@ -32,7 +31,7 @@ h3 {
 
 :root {
   font-family: 'Philosopher', sans-serif;
-  color: white;
+  color: antiquewhite;
 }
 
 /* --- --- --- --- --- */
@@ -54,7 +53,6 @@ html {
 body {
   background-image: url('../images/yosh-ginsu-qexZLgMcbPc-unsplash.jpg');
   background-repeat: no-repeat;
-  background-color: orangered;
   background-position: center bottom;
   width: 100vw;
   margin: 0 auto;

@@ -1,6 +1,10 @@
 	<footer>
 
-	    <p>© Terra do Diabo Hotels 2023</p>
+	    <div id="more-info">More information</div>
+	    <div id="contact">Contact</div>
+	    <div id="work-for-us">Work</div>
+
+	    <span>© Terra do Diabo Hotels 2023</span>
 
 	</footer>
 
