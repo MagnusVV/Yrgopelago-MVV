@@ -1,4 +1,4 @@
-![Volcano](https://media.giphy.com/media/r5gHt2TCIiHK0/giphy.mp4)
+![Volcano](https://media.giphy.com/media/r5gHt2TCIiHK0/giphy.gif)
 
 # Ilha das mil pragas
 
