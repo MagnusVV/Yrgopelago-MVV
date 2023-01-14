@@ -1,29 +1,223 @@
-{
-  "vacation": [
-    {
-      "island": "Anthrax island",
-      "hotel": "Budget hostel",
-      "arrival_date": "2023-01-01",
-      "departure_date": "2023-01-04",
-      "total_cost": "8",
-      "stars": "2",
-      "features": [{ "name": "Fruit basket for vitamin C", "cost": 1 }],
-      "addtional_info": "Thank you for saving a buck at Budget hostel."
-    },
-    {
-      "island": "Isla Bellevue",
-      "hotel": "Grand central Hotel",
-      "arrival_date": "2023-01-05",
-      "departure_date": "2023-01-08",
-      "total_cost": "11",
-      "stars": "3",
-      "features": [{ "name": "Pinball machine", "cost": 3 }],
-      "addtional_info": [
-        {
-          "greeting": "Thank you for choosing Centralhotellet",
-          "video": "https://www.youtube.com/watch?v=5Ym-k30X5PY"
-        }
-      ]
+[
+  {
+    "island": "The Yellow Duck Island",
+    "hotel": "The Yellow Duck",
+    "arrival_date": "2023-01-29",
+    "departure_date": "2023-01-31",
+    "total_cost": "2",
+    "stars": "1",
+    "addtional_info": "Thank you for staying at the Yellow Duck!"
+  },
+
+  {
+    "island": "Point Nemo",
+    "hotel": "The Good Morrow",
+    "arrival_date": "2023-01-23",
+    "departure_date": "2023-01-24",
+    "total_cost": "6$",
+    "stars": 5,
+    "features": [
+      {
+        "name": "Poetry Waking",
+        "cost": 3
+      }
+    ],
+    "additional_info": {
+      "message": "Very good. Enjoy your stay. But not too much, you might never leave."
     }
-  ]
-}
+  },
+
+  {
+    "island": "Glacier Island",
+    "hotel": "Neversummer hotel",
+    "arrival_date": "2023-01-31",
+    "departure_date": "2023-01-31",
+    "total_cost": 10,
+    "stars": 5,
+    "features": [[]],
+    "additional_info": "You saved $0 with discounts"
+  },
+
+  {
+    "island": "Isla Rublar",
+    "hotel": "Dino Resort",
+    "arrival_date": "2023-01-29",
+    "departure_date": "2023-01-31",
+    "total_cost": "2",
+    "features": null,
+    "stars": "1",
+    "addtional_info": "At least Ruben, the hotel owner, had a blast this Christmas."
+  },
+
+  {
+    "island": "island",
+    "hotel": "hotel",
+    "arrival_date": "2023-01-31",
+    "departure_date": "2023-01-31",
+    "total_cost": 3,
+    "stars": 3,
+    "features": [
+      {
+        "name": "daily newspaper",
+        "cost": 3
+      }
+    ],
+    "additional_info": "thank you for staying at the hotel hotel"
+  },
+
+  {
+    "island": "Gooh-Gooh Island",
+    "hotel": "Hotel Yahoo",
+    "arrival_date": "2023-01-18",
+    "departure_date": "2023-01-19",
+    "total_cost": "5",
+    "stars": "3",
+    "addtional_info": "Welcome to Yahoo!"
+  },
+
+  {
+    "island": "Tech Island",
+    "hotel": "Silicon-Vali",
+    "name": "Magnus",
+    "arrival_date": "2023-01-26",
+    "departure_date": "2023-01-27",
+    "total_cost": 2,
+    "stars": "1",
+    "features": [],
+    "addtional_info": "Thank you for booking Hotel-Silicon-Vali, Hope you have a nice stay."
+  },
+
+  {
+    "island": "Isla de los Monos",
+    "hotel": "Overwater Resort",
+    "arrival_date": "2023-01-30",
+    "departure_date": "2023-01-31",
+    "total_cost": 1,
+    "stars": "2",
+    "features": null,
+    "additional_info": "Thank you for choosing Overwater Resort."
+  },
+
+  {
+    "island": "Isle of Sgàil",
+    "hotel": "The Burnwood Estate",
+    "arrival_date": "2023-01-27",
+    "departure_date": "2023-01-27",
+    "total_cost": 12,
+    "stars": "3",
+    "features": [
+      {
+        "name": "tour",
+        "cost": 5
+      }
+    ],
+    "additional_info": "Welcome to the The Burnwood Estate, we hope you enjoy your stay"
+  },
+
+  {
+    "island": "Dirt Cheap Island",
+    "hotel": "The Very Average Island Inn",
+    "arrival_date": "2023-01-27",
+    "departure_date": "2023-01-31",
+    "total_cost": 3,
+    "stars": "3",
+    "features": [],
+    "additional_info": "Thank you for staying at this very average hotel."
+  },
+
+  {
+    "island": "Pelagon",
+    "hotel": "Moster Dagnys",
+    "arrival_date": "2023-01-21",
+    "departure_date": "2023-01-22",
+    "total_cost": 2,
+    "stars": "1",
+    "features": {
+      "name": "",
+      "cost": ""
+    },
+    "addtional_info": "Thank you for making the right choice by staying at Moster Dagnys. We hope you will enjoy your stay."
+  },
+
+  {
+    "island": "Altis",
+    "hotel": "Crown Mountain Hotel",
+    "arrival_date": "2023-01-06",
+    "departure_date": "2023-01-07",
+    "total_cost": 6,
+    "stars": "5",
+    "features": [
+      {
+        "feature": "breakfust",
+        "cost": 3
+      }
+    ],
+    "additional_info": "Thank you for staying at Crown Mountain Hotel"
+  },
+
+  {
+    "island": "Space Shuttle Island",
+    "hotel": "Groundbreaker",
+    "arrival_date": "2023-01-27",
+    "departure_date": "2023-01-29",
+    "total_cost": "11",
+    "stars": "3",
+    "features": { "name": "1", "cost": 3 },
+    "additional_info": "Thank you for chosing the hotel among the stars!"
+  },
+
+  {
+    "island": "Serendipity Island",
+    "hotel": "Island Oasis Inn",
+    "arrival_date": "2023-01-31",
+    "departure_date": "2023-01-31",
+    "total_cost": "10.00",
+    "room_type": "luxury",
+    "stars": 5,
+    "features": {
+      "name": "butler, breakfast",
+      "cost": "4.00"
+    },
+    "additional_info": "https://www.youtube.com/watch?v=6x-JVXkd8SQ"
+  },
+
+  {
+    "island": "Main island",
+    "hotel": "Centralhotellet",
+    "arrival_date": "2023-01-29",
+    "departure_date": "2023-01-31",
+    "total_cost": "6",
+    "stars": "3",
+    "features": null,
+    "addtional_info": "Thank you for choosing Centralhotellet"
+  },
+
+  {
+    "island": "Nomi island",
+    "hotel": "Nomis Hotel",
+    "arrival_date": "2023-01-10",
+    "departure_date": "2023-01-11",
+    "total_cost": 6,
+    "stars": "5",
+    "features": [
+      {
+        "sauna": true,
+        "cost": 2
+      }
+    ],
+    "addtional_info": {
+      "greeting": "Thanks for choosing Nomis!"
+    }
+  },
+
+  {
+    "island": "Southern Isles",
+    "hotel": "Hans\u00b4s Haven",
+    "arrival_date": "2023-01-02",
+    "departure_date": "2023-01-03",
+    "total_cost": 2,
+    "stars": 3,
+    "features": [null],
+    "additional_info": "Thank you . Magnus .  for choosing Hans\u00b4s Haven."
+  }
+]
