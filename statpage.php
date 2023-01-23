@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-
 require __DIR__ . '/views/header.php';
-
 
 // Error when trying to require any of the functions files. Pasting code block instead.
 try {
@@ -37,6 +35,7 @@ $stmt->execute();
 $totalBookings = $stmt->fetch();
 
 //Query for fetching the used features, sort the returned array in descending order, in order to echo the correct response.
+//I've spent a lot of time trying to find a better query for this but can't make it work with the inner joins and such. This will have to make do (sorting the array DESC that is).
 $totalFeaturesQuery = 'SELECT SUM(r1f1+r2f1+r3f1) as "First Aid Kit", SUM(r1f2+r2f2+r3f2) as "Priest", SUM(r3f1+r3f2+r3f3) as "Vivid dream products"
 FROM (SELECT SUM(Extra_feature_1) as r1f1, SUM(Extra_feature_2) as r1f2, SUM(Extra_Feature_3) as r1f3 from Room_1)
 INNER JOIN (SELECT SUM(Extra_feature_1) as r2f1, SUM(Extra_feature_2) as r2f2, SUM(Extra_feature_3) as r2f3 from Room_2)
@@ -74,22 +73,25 @@ $logbookEvents = json_decode($logbookEvents, true);
 
 <section class="hotel-stats">
     <h2 class="stat-page-h2">Hotel Statistics: January</h2>
-    <p>
-        <?=
-        "During January our hotel made "
-            . $totalIncome['total_income']
-            . " dollars. Our three rooms saw a total of "
-            . $totalBookings['total_bookings']
-            . " reservations which comes around to a "
-            . $totalIncome['total_income'] / $totalBookings['total_bookings']
-            . " dollar average including extra features. Our most wanted feature was "
-            . key($totalFeatures)
-            . " which was ordered "
-            . current($totalFeatures)
-            . " times.";
-        ?>
-    </p>
-    <div class="stats-box"></div>
+    <div class="stats-box">
+        <p>
+            <?=
+            "During January our hotel made "
+                . $totalIncome['total_income']
+                . " dollars. Our three rooms saw a total of "
+                . $totalBookings['total_bookings']
+                . " reservations which comes around to a "
+                . $totalIncome['total_income'] / $totalBookings['total_bookings']
+                . " dollar average including extra features. Our most wanted feature was "
+                . key($totalFeatures)
+                . " which was ordered "
+                . current($totalFeatures)
+                . " times.";
+            ?>
+        </p>
+    </div>
+    <a class="stats-link" href="../index.php">Take me back to bookings!</a>
+
 </section>
 
 <?php require __DIR__ . '/views/footer.php';

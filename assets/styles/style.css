@@ -54,7 +54,7 @@ table {
 }
 
 /* the submit-button*/
-.submit-button {
+.submit-button, .stats-link {
   background-color: antiquewhite;
   border-radius: 5%;
   border: none;
@@ -67,7 +67,7 @@ table {
   font-size: 20px;
 }
 
-.submit-button:hover {
+.submit-button:hover, .stats-link:hover {
   background-color: rgb(64, 64, 175);
 }
 
@@ -76,18 +76,15 @@ table {
   margin: 2rem 0 5rem 2rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+.booking-stats p{
+  margin: 0 20%;
 }
 
 .stats-link {
-  background-color: aliceblue;
   align-self: center;
-  margin: 1rem;
-  height: 3rem;
-  width: 5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 20px;
+  margin: 2rem;
 }
 
 .travel-h2{
@@ -110,9 +107,11 @@ table {
   text-align: center;
 }
 
-/* .hotel-stats {
- 
-} */
+.hotel-stats {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+}
 
 /* Footer */
 footer {
