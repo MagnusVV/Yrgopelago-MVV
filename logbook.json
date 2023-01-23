@@ -5,6 +5,7 @@
     "arrival_date": "2023-01-29",
     "departure_date": "2023-01-31",
     "total_cost": "2",
+    "features":[],
     "stars": "1",
     "addtional_info": "Thank you for staying at the Yellow Duck!"
   },
@@ -14,8 +15,8 @@
     "hotel": "The Good Morrow",
     "arrival_date": "2023-01-23",
     "departure_date": "2023-01-24",
-    "total_cost": "6$",
-    "stars": 5,
+    "total_cost": "6",
+    "stars": "5",
     "features": [
       {
         "name": "Poetry Waking",
@@ -34,7 +35,7 @@
     "departure_date": "2023-01-31",
     "total_cost": 10,
     "stars": 5,
-    "features": [[]],
+    "features": [],
     "additional_info": "You saved $0 with discounts"
   },
 
@@ -44,7 +45,7 @@
     "arrival_date": "2023-01-29",
     "departure_date": "2023-01-31",
     "total_cost": "2",
-    "features": null,
+    "features": [],
     "stars": "1",
     "addtional_info": "At least Ruben, the hotel owner, had a blast this Christmas."
   },
@@ -72,6 +73,7 @@
     "departure_date": "2023-01-19",
     "total_cost": "5",
     "stars": "3",
+    "features":[],
     "addtional_info": "Welcome to Yahoo!"
   },
 
@@ -81,7 +83,7 @@
     "name": "Magnus",
     "arrival_date": "2023-01-26",
     "departure_date": "2023-01-27",
-    "total_cost": 2,
+    "total_cost": "2",
     "stars": "1",
     "features": [],
     "addtional_info": "Thank you for booking Hotel-Silicon-Vali, Hope you have a nice stay."
@@ -92,9 +94,9 @@
     "hotel": "Overwater Resort",
     "arrival_date": "2023-01-30",
     "departure_date": "2023-01-31",
-    "total_cost": 1,
+    "total_cost": "1",
     "stars": "2",
-    "features": null,
+    "features": [],
     "additional_info": "Thank you for choosing Overwater Resort."
   },
 
@@ -132,10 +134,7 @@
     "departure_date": "2023-01-22",
     "total_cost": 2,
     "stars": "1",
-    "features": {
-      "name": "",
-      "cost": ""
-    },
+    "features": [],
     "addtional_info": "Thank you for making the right choice by staying at Moster Dagnys. We hope you will enjoy your stay."
   },
 
@@ -148,7 +147,7 @@
     "stars": "5",
     "features": [
       {
-        "feature": "breakfust",
+        "name": "breakfust",
         "cost": 3
       }
     ],
@@ -162,7 +161,7 @@
     "departure_date": "2023-01-29",
     "total_cost": "11",
     "stars": "3",
-    "features": { "name": "1", "cost": 3 },
+    "features": [{ "name": "1", "cost": 3 }],
     "additional_info": "Thank you for chosing the hotel among the stars!"
   },
 
@@ -174,10 +173,10 @@
     "total_cost": "10.00",
     "room_type": "luxury",
     "stars": 5,
-    "features": {
+    "features": [{
       "name": "butler, breakfast",
       "cost": "4.00"
-    },
+    }],
     "additional_info": "https://www.youtube.com/watch?v=6x-JVXkd8SQ"
   },
 
@@ -188,7 +187,7 @@
     "departure_date": "2023-01-31",
     "total_cost": "6",
     "stars": "3",
-    "features": null,
+    "features": [],
     "addtional_info": "Thank you for choosing Centralhotellet"
   },
 
@@ -201,7 +200,7 @@
     "stars": "5",
     "features": [
       {
-        "sauna": true,
+        "name": "sauna",
         "cost": 2
       }
     ],
@@ -217,7 +216,7 @@
     "departure_date": "2023-01-03",
     "total_cost": 2,
     "stars": 3,
-    "features": [null],
+    "features": [],
     "additional_info": "Thank you . Magnus .  for choosing Hans\u00b4s Haven."
   }
 ]
