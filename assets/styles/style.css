@@ -1,6 +1,6 @@
 /* SPECIFIC STYLING */
 
-.about {
+.about, .booking-stats p, .hotel-stats p {
   margin: 0 30%;
   font-style: oblique;
   font-size: large;
@@ -44,12 +44,17 @@ table {
   border: 5px solid antiquewhite;
 }
 
+.bottom-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 .booking-form {
   margin: 2rem 0 5rem 2rem;
 }
 
 /* the submit-button*/
-.submit-button {
+.submit-button, .stats-link {
   background-color: antiquewhite;
   border-radius: 5%;
   border: none;
@@ -62,8 +67,50 @@ table {
   font-size: 20px;
 }
 
-.submit-button:hover {
+.submit-button:hover, .stats-link:hover {
   background-color: rgb(64, 64, 175);
+}
+
+/* 2.0: added visits */
+.booking-stats {
+  margin: 2rem 0 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.booking-stats p{
+  margin: 0 20%;
+}
+
+.stats-link {
+  align-self: center;
+  margin: 2rem;
+}
+
+.travel-h2{
+  text-align: center;
+}
+
+.visits-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 0 4rem;
+}
+
+.visit {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  background-color: #f76d3c;
+}
+
+.stat-page-h2 {
+  text-align: center;
+}
+
+.hotel-stats {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
 }
 
 /* Footer */
