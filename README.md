@@ -1,7 +1,7 @@
 ![Volcano](https://media.giphy.com/media/r5gHt2TCIiHK0/giphy.gif)
 
 # Yrgopelago, the final project in the PHP course
-This was made over Christmas, between the first and second semester. The task was to create a simple hotel with three rooms and a booking calendar. The teacher constructed a central bank, which handled the payments (via API-keys) and the accounts for each hotel. The rooms needed to be bookable, while avoiding being double booked, and one should have the option to add some "extras" for an extra final cost. All of this should be handled by a unique MySQL-database for each hotel. It was required to be deployed, as we were supposed to have a contest between each hotel when the task was finished.
+This was made over Christmas, between the first and second semester. The task was to create a simple hotel with three rooms and a booking calendar. The teacher constructed a central bank, which handled the payments (via API-keys) and the accounts for each hotel. The rooms needed to be bookable, while avoiding being double booked, and one should have the option to add some "extras" for an extra final cost. All of this should be handled by a unique SQLite-database for each hotel. It was required to be deployed, as we were supposed to have a contest between each hotel when the task was finished.
 
 It was created mostly with PHP (with Guzzle for queries and POST requests), some HTML and CSS, and a chunk of JS (mostly to handle the live-update of the forms and the visibility of rooms choosen).
 
