@@ -7,7 +7,7 @@ It was created mostly with PHP (with Guzzle for queries and POST requests), some
 
 It it still up and running, albeit a bit damaged layout-wise after a couple of one.com-upgrades. Unfortunately it can't be booked anymore, since the "central bank"-API has been removed.
 
-https://magnusvargvinter.000webhostapp.com/Yrgopelago-MVV/index.php
+[Deployed site](https://magnusvargvinter.000webhostapp.com/Yrgopelago-MVV/index.php)
 
 # Ilha das mil pragas
 
